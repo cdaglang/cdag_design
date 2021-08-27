@@ -10,18 +10,18 @@ from lex import TOKEN
 # tokens
 actions = ("adds",)
 misc = ("comma", "lbra", "rbra")  # :, [, ]
-types = ("string", "integer")  # --> type(1), type('oi')
+types = ("string", "integer")  # ex: type(1), type('oi')
 reserved = actions + misc + types
 
 # valores / variaveis
-values = ("str1", "int1")  # --> 1, 'oi'
-ids = ("id",)  # var1, var2, subj1, subj2
+values = ("str1", "int1")  # ex: 1, 'oi'
+ids = ("id",)  # ex: var1, var2, subj1, subj2
 
 tokens = reserved + values + ids
 
 t_ignore = '\n\t ,;'
 t_str1 = r'\".*?\"|\'.*?\''
-int1_token = r'[+|-]?\d+'  # r'[+|-]?\d+[^\.]'
+int1_token = r'[+|-]?\d+'
 id_token = r'[a-zA-Z]+[\w]+'
 t_comma = r':'
 t_lbra = r'\['
