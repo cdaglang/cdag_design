@@ -9,17 +9,23 @@ from cdag_lex import lexer, tokens
 # código vai aqui:
 
 
-def p_s1(p):
-    """s1 : subj comma action lbra objs rbra"""
-    if len(p) == 7:
-        p[0] = ({'subj': (p[1],)},
-                (
-                    {
-                        'action': (p[3],),
-                        'obj': p[5]
-                    }
-                ,)
-                )
+def p_s0(p):
+    """s0 : subjs actions_obj_attr"""
+    p[0] = (p[1], p[2])
+
+
+def p_subjs(p):
+    """subjs : subj comma"""
+    p[0] = {'subj': (p[1],)}
+
+
+def p_actions_etc(p):
+    """actions_obj_attr : action lbra objs rbra
+                        | action lbra objs rbra actions_obj_attr"""
+    if len(p) == 5:
+        p[0] = ({'action': (p[1],), 'obj': p[3]},)
+    elif len(p) == 6:
+        p[0] = ({'action': (p[1],), 'obj': p[3]},) + p[5]
 
 
 def p_s2(p):
