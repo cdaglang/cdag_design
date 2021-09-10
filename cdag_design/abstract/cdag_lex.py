@@ -8,8 +8,8 @@ import lex
 from lex import TOKEN
 
 # tokens
-actions = ("adds",)
-misc = ("comma", "lbra", "rbra")  # :, [, ]
+actions = ("adds", "outputs")
+misc = ("comma", "lbra", "rbra", "as")  # :, [, ], 'as'
 types = ("string", "integer")  # ex: type(1), type('oi')
 reserved = actions + misc + types
 

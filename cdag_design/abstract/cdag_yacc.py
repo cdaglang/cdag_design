@@ -21,11 +21,17 @@ def p_subjs(p):
 
 def p_actions_etc(p):
     """actions_obj_attr : action lbra objs rbra
-                        | action lbra objs rbra actions_obj_attr"""
+                        | action lbra objs rbra actions_obj_attr
+                        | action lbra objs rbra as attrs
+                        | action lbra objs rbra as attrs actions_obj_attr"""
     if len(p) == 5:
         p[0] = ({'action': (p[1],), 'obj': p[3]},)
     elif len(p) == 6:
         p[0] = ({'action': (p[1],), 'obj': p[3]},) + p[5]
+    elif len(p) == 7:
+        p[0] = ({'action': (p[1],), 'obj': p[3], 'attr': p[6]},)
+    elif len(p) == 8:
+        p[0] = ({'action': (p[1],), 'obj': p[3], 'attr': p[6]},) + p[7]
 
 
 def p_s2(p):
@@ -34,7 +40,8 @@ def p_s2(p):
 
 
 def p_action(p):
-    """action : adds"""
+    """action : adds
+              | outputs"""
     p[0] = p[1]
 
 
@@ -45,6 +52,15 @@ def p_s3(p):
             | id objs
             | int1 objs
             | str1 objs"""
+    if len(p) == 2:
+        p[0] = (p[1],)
+    elif len(p) == 3:
+        p[0] = (p[1],) + p[2]
+
+
+def p_s4(p):
+    """attrs : id
+             | id attrs"""
     if len(p) == 2:
         p[0] = (p[1],)
     elif len(p) == 3:
