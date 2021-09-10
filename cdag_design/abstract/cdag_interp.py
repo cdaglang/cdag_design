@@ -4,9 +4,9 @@ from cdag_mem import pointer, mem
 from hashlib import md5
 
 # TODO:
-# - criar o hash para definir atributos distintamente
-# - definir o valor e nome das variaveis para colocar no pointer e no mem
-# - transferir os dados para o pointer e mem, por onde as ações vão ser executadas
+# - definir os 'parametros' das ações
+# - incluir ação 'sets'
+# [Dani + G]: - discutir e escrever uma forma de memória baseada em pilha
 
 counter = 0
 
